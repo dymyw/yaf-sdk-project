@@ -44,24 +44,6 @@
 - 数据库配置
 - redis 配置
 
-数据表 `t_category`
-
-```sql
-CREATE TABLE `t_category` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类id',
-  `name` varchar(16) NOT NULL DEFAULT '' COMMENT '分类名称',
-  `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '父级分类id',
-  `weight` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '权重',
-  `depth` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '深度，从1递增',
-  `type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '类型 1=地址',
-  `row_status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态 -1=无效 1=显示 2=隐藏',
-  `created_at` timestamp NOT NULL DEFAULT '1970-01-01 08:00:00' COMMENT '创建时间',
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`id`),
-  KEY `idxc_category_type_pid` (`type`,`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COMMENT='分类表';
-```
-
 ### 约定
 
 注意
