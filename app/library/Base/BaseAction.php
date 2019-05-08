@@ -22,6 +22,7 @@ abstract class BaseAction extends AbstractAction
 
     /**
      * @return mixed|void
+     * @throws Exception
      */
     final public function execute()
     {
@@ -35,6 +36,8 @@ abstract class BaseAction extends AbstractAction
                 'file'      => __FILE__,
                 'line'      => __LINE__,
             ]);
+
+            throw $e;
         }
     }
 }
