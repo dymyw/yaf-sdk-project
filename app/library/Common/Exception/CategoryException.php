@@ -14,7 +14,7 @@ use Base\BaseException;
 class CategoryException extends BaseException
 {
     const CATEGORY_EXISTS_ERROR     = 110001;
-    const ADD_CATEGORY_ERROR        = 110002;
+    const CREATE_CATEGORY_ERROR     = 110002;
     const UPDATE_CATEGORY_ERROR     = 110003;
     const CATEGORY_NOT_EXISTS_ERROR = 110004;
 
@@ -27,8 +27,8 @@ class CategoryException extends BaseException
     {
         return [
             self::CATEGORY_EXISTS_ERROR     => '分类已存在',
-            self::ADD_CATEGORY_ERROR        => '添加标签失败',
-            self::UPDATE_CATEGORY_ERROR     => '更新标签失败',
+            self::CREATE_CATEGORY_ERROR     => '创建分类失败',
+            self::UPDATE_CATEGORY_ERROR     => '更新分类失败',
             self::CATEGORY_NOT_EXISTS_ERROR => '分类不存在',
         ];
     }
