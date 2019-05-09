@@ -13,7 +13,7 @@ use Dymyw\Yaf\Response\Exception;
  */
 class BaseException extends Exception
 {
-    const NORMAL_ERROR              = 100001;
+    const NORMAL_ERROR      = 100001;
 
     /**
      * 获取错误 Map
@@ -23,7 +23,7 @@ class BaseException extends Exception
     protected static function getCodeMap() : array
     {
         return [
-            self::NORMAL_ERROR              => 'success',
+            self::NORMAL_ERROR      => 'success',
         ];
     }
 }
