@@ -41,6 +41,7 @@
 ### 编辑 `conf/application.ini`
 
 - log.path
+- 接口请求地址配置
 - 数据库配置
 - redis 配置
 

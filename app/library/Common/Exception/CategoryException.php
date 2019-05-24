@@ -23,7 +23,7 @@ class CategoryException extends BaseException
      *
      * @return array
      */
-    protected static function getCodeMap() : array
+    public static function getCodeMap() : array
     {
         return [
             self::CATEGORY_EXISTS_ERROR     => '分类已存在',
