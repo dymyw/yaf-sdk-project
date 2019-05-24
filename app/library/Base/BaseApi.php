@@ -15,11 +15,6 @@ use Yaf\Registry;
  */
 class BaseApi extends AbstractApi
 {
-    const ERROR_NO      = 'errno';
-    const ERROR_MSG     = 'errmsg';
-    const SUCCESS_NO    = '0';
-    const SUCCESS_MSG   = 'success';
-
     /**
      * 接口配置
      *
@@ -65,9 +60,30 @@ class BaseApi extends AbstractApi
         $url    = Registry::get('config')->host->internal->$host . $getApiVal('url', '/');
 
         return [
+            'host'  => $host,
             'url'   => $url,
             'data'  => array_merge($getApiVal('params', []), $this->params),
             'type'  => strtoupper($getApiVal('method', 'get')),
         ];
+    }
+
+    /**
+     * 获取接口返回信息说明
+     *
+     * @param string $host
+     * @return array
+     */
+    public static function getApiResponseConfig($host = 'default') : array
+    {
+        $config = [
+            'default' => [
+                'err_no_field'  => 'err_no',    // 接口错误代码字段名称
+                'err_msg_field' => 'err_msg',   // 接口错误信息字段名称
+                'success_no'    => 0,           // 接口请求成功的错位代码
+                'success_msg'   => 'success',   // 接口请求成功的错误信息
+            ],
+        ];
+
+        return $config[$host] ?? $config['default'];
     }
 }

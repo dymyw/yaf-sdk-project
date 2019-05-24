@@ -71,20 +71,21 @@ class CallApi
                 }
             }
 
+            $apiResponseConfig = BaseApi::getApiResponseConfig($item->getRequest()['host']);
             // 接口调用结果不是正确状态
-            if ($response[BaseApi::ERROR_NO] != ResultUtil::SUCCESS_NO) {
+            if ($response[$apiResponseConfig['err_no_field']] != $apiResponseConfig['success_no']) {
                 Logger::getInstance()->error(BaseException::getCodeMap()[BaseException::CALL_API_ERROR], BaseException::CALL_API_ERROR, [
                     'request'   => $item->getRequest(),
                     'response'  => $response,
                     'file'      => __FILE__,
                     'line'      => __LINE__,
-                    'errMsg'    => $response[BaseApi::ERROR_MSG],
-                    'errCode'   => $response[BaseApi::ERROR_NO],
+                    'errMsg'    => $response[$apiResponseConfig['err_msg_field']],
+                    'errCode'   => $response[$apiResponseConfig['err_no_field']],
                 ]);
 
                 // 没有设置接口请求默认值，直接抛出异常
                 if (is_null($default)) {
-                    throw new Exception($response[BaseApi::ERROR_MSG], $response[BaseApi::ERROR_NO]);
+                    throw new Exception($response[$apiResponseConfig['err_msg_field']], $response[$apiResponseConfig['err_no_field']]);
                 } else {
                     $allResponse[] = $default;
                 }

@@ -92,34 +92,34 @@ class CallAction extends BaseAction
          * CallApi（请求多个）
          * =============================================================================================================
          */
-        $api = [
-            [
-                [
-                    'host'      => 'beta',
-                    'url'       => '/open/article/detail',
-                    'method'    => 'get',
-                ],
-                [
-                    'id' => 50700000,
-                ],
-                false,
-            ],
-            [
-                [
-                    'host'      => 'beta',
-                    'url'       => '/open/article/detail',
-                    'method'    => 'get',
-                ],
-                [
-                    'id' => 5080000,
-                ],
-            ],
-        ];
-
-        // 执行
-        $response = \Common\CallApi::execMulti(...$api);
-
-        // 获取结果
-        var_dump($response);
+//        $api = [
+//            [
+//                [
+//                    'host'      => 'beta',
+//                    'url'       => '/open/article/detail',
+//                    'method'    => 'get',
+//                ],
+//                [
+//                    'id' => 50700000,
+//                ],
+//                false,
+//            ],
+//            [
+//                [
+//                    'host'      => 'beta',
+//                    'url'       => '/open/article/detail',
+//                    'method'    => 'get',
+//                ],
+//                [
+//                    'id' => 5080000,
+//                ],
+//            ],
+//        ];
+//
+//        // 执行
+//        $response = \Common\CallApi::execMulti(...$api);
+//
+//        // 获取结果
+//        var_dump($response);
     }
 }
