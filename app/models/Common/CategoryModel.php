@@ -26,7 +26,6 @@ class CategoryModel extends BaseModel
     /**
      * 状态
      */
-    const ROW_STATUS_DELETE     = -1;
     const ROW_STATUS_NORMAL     = 1;
     const ROW_STATUS_HIDDEN     = 2;
 

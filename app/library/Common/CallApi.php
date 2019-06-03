@@ -33,7 +33,7 @@ class CallApi
         try {
             AgentApi::request(...$apiInstance);
         } catch (\Exception $e) {
-            Logger::getInstance()->error(BaseException::getCodeMap()[BaseException::CALL_API_ERROR], BaseException::CALL_API_ERROR, [
+            Logger::getInstance()->error(BaseException::getErrMsg(BaseException::CALL_API_ERROR), BaseException::CALL_API_ERROR, [
                 'arguments' => $arguments,
                 'response'  => 'error',
                 'file'      => __FILE__,
@@ -54,7 +54,7 @@ class CallApi
                 $response = $item->getResponse();
             } catch (Exception $e) {
                 // 接口返回没有正常数据
-                Logger::getInstance()->error(BaseException::getCodeMap()[BaseException::CALL_API_ERROR], BaseException::CALL_API_ERROR, [
+                Logger::getInstance()->error(BaseException::getErrMsg(BaseException::CALL_API_ERROR), BaseException::CALL_API_ERROR, [
                     'request'   => $item->getRequest(),
                     'response'  => 'no result',
                     'file'      => __FILE__,
@@ -74,7 +74,7 @@ class CallApi
             $apiResponseConfig = BaseApi::getApiResponseConfig($item->getRequest()['host']);
             // 接口调用结果不是正确状态
             if ($response[$apiResponseConfig['err_no_field']] != $apiResponseConfig['success_no']) {
-                Logger::getInstance()->error(BaseException::getCodeMap()[BaseException::CALL_API_ERROR], BaseException::CALL_API_ERROR, [
+                Logger::getInstance()->error(BaseException::getErrMsg(BaseException::CALL_API_ERROR), BaseException::CALL_API_ERROR, [
                     'request'   => $item->getRequest(),
                     'response'  => $response,
                     'file'      => __FILE__,

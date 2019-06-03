@@ -3,6 +3,7 @@
 namespace Common\Request\Category;
 
 use Dymyw\Yaf\Request\AbstractRequest;
+use Dymyw\Yaf\Response\Exception;
 use Dymyw\Yaf\Utils\Validator\Validator;
 
 /**
@@ -12,7 +13,7 @@ use Dymyw\Yaf\Utils\Validator\Validator;
 class Info extends AbstractRequest
 {
     /**
-     * @throws \Dymyw\Yaf\Response\Exception
+     * @throws Exception
      */
     public function checkParams()
     {

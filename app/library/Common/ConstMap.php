@@ -14,6 +14,7 @@ class ConstMap
     // sql
     const ORDER_BY_ASC          = 'ASC';
     const ORDER_BY_DESC         = 'DESC';
+    const ROW_STATUS_DELETE     = -1;
 
     // time
     const ONE_DAY_SECONDS       = 86400;    // 1天
