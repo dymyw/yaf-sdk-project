@@ -6,6 +6,7 @@
 use App\Models\Common\CategoryModel;
 use Base\BaseAction;
 use Common\Exception\CategoryException;
+use Dymyw\Yaf\Response\Exception;
 
 /**
  * Class InfoAction
@@ -14,7 +15,7 @@ class InfoAction extends BaseAction
 {
     /**
      * @return mixed|void
-     * @throws \Dymyw\Yaf\Response\Exception
+     * @throws Exception
      */
     public function _exec()
     {

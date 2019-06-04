@@ -5,6 +5,7 @@
 
 use Base\BaseException;
 use Dymyw\Yaf\Controller\ApiBaseController;
+use Dymyw\Yaf\Response\Exception;
 
 /**
  * Class IndexController
@@ -12,7 +13,7 @@ use Dymyw\Yaf\Controller\ApiBaseController;
 class IndexController extends ApiBaseController
 {
     /**
-     * @throws \Dymyw\Yaf\Response\Exception
+     * @throws Exception
      */
     public function indexAction()
     {
