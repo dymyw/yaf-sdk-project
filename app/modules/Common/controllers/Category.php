@@ -2,13 +2,17 @@
 
 use Dymyw\Yaf\Controller\ApiBaseController;
 
+/**
+ * 公共分类相关操作
+ *
+ * Class CategoryController
+ */
 class CategoryController extends ApiBaseController
 {
     /**
      * @var array
      */
     public $actions = [
-        'info'      => 'modules/Common/actions/Category/Info.php',
-        'call'      => 'modules/Common/actions/Category/Call.php',
+        'info'          => 'modules/Common/actions/Category/Info.php',
     ];
 }
