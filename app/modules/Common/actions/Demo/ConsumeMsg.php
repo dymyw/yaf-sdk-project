@@ -2,6 +2,7 @@
 
 use Base\BaseAction;
 use Dymyw\Yaf\Utils\AsyncMsg\RabbitMqUtil;
+use Dymyw\Yaf\Utils\Logger;
 use PhpAmqpLib\Message\AMQPMessage;
 use Thumper\Consumer;
 
@@ -25,6 +26,7 @@ class ConsumeMsgAction extends BaseAction
         $consumer = new Consumer($conn);
         $consumer->setQueueOptions([
             'name'  => 'project.light.queue.msg_transfer',
+//            'name'  => 'project.delay.queue.msg_transfer',
         ]);
         $consumer->setCallback([$this, 'callback']);
 
@@ -37,9 +39,13 @@ class ConsumeMsgAction extends BaseAction
          *      避免大量消息而导致消费端奔溃不可用
          */
         $consumer->setQos([
-            'prefetch_count' => 3,
+            'prefetch_count' => 2,
         ]);
 
+        /**
+         * 一次消费两条，消费完结束
+         * 如果只有一条，堵塞，直到有两条消息，消费完结束
+         */
         $consumer->consume(2);
     }
 
@@ -49,6 +55,7 @@ class ConsumeMsgAction extends BaseAction
     public function callback($msg)
     {
         $msg = json_decode($msg, true);
-        var_dump($msg);
+
+        Logger::getInstance()->general('trace', $msg);
     }
 }
