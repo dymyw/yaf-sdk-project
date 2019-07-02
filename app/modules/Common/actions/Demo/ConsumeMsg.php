@@ -46,7 +46,7 @@ class ConsumeMsgAction extends BaseAction
          * 一次消费两条，消费完结束
          * 如果只有一条，堵塞，直到有两条消息，消费完结束
          */
-        $consumer->consume(2);
+        $consumer->consume(10);
     }
 
     /**
