@@ -6,7 +6,6 @@
 use App\Models\Common\CategoryModel;
 use Base\BaseAction;
 use Common\Exception\CategoryException;
-use Dymyw\Yaf\Response\Exception;
 
 /**
  * Class InfoAction
@@ -15,24 +14,31 @@ class InfoAction extends BaseAction
 {
     /**
      * @return mixed|void
-     * @throws Exception
+     * @throws \Dymyw\Yaf\Response\Exception
      */
     public function _exec()
     {
-        $id = (int) $this->getController()->getRequest()->getParam('id');
+        $id         = (int) $this->getController()->getRequest()->getParam('id');
+        $fieldType  = $this->getController()->getRequest()->getParam('field_type');
 
-        $where = [
-            'id' => $id,
-        ];
+        $model = new CategoryModel();
 
-        $model  = new CategoryModel();
-        $info   = $model->get(CategoryModel::$tableFields, $where);
-        if (empty($info)) {
-            throw CategoryException::error(CategoryException::CATEGORY_NOT_EXISTS_ERROR);
-        }
+        $where = [];
+        $model->whereAppend($where, 'id', $id);
 
-        $this->response([
-            'info' => $info,
-        ]);
+        $fields = $model->getFieldByType($fieldType);
+        $info   = $model->get($fields, $where);
+        $model->checkEmpty(
+            $info,
+            CategoryException::getErrMsg(CategoryException::CATEGORY_NOT_EXISTS_ERROR),
+            CategoryException::CATEGORY_NOT_EXISTS_ERROR,
+            [
+                'where' => $where,
+                'file'  => __FILE__,
+                'line'  => __LINE__,
+            ]
+        );
+
+        $this->response($info);
     }
 }

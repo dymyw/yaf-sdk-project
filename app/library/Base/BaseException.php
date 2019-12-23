@@ -13,19 +13,25 @@ use Dymyw\Yaf\Response\Exception;
  */
 class BaseException extends Exception
 {
-    const NORMAL_ERROR      = 100001;
-    const CALL_API_ERROR    = 100002;
+    const NORMAL_ERROR                  = 100001;
+    const CALL_API_ERROR                = 100002;
+
+    // MySQL
+    const MYSQL_FETCH_INFO_EMPTY_ERROR  = 100010;
 
     /**
      * 获取错误 Map
      *
      * @return array
      */
-    public static function getCodeMap() : array
+    protected static function getCodeMap() : array
     {
         return [
-            self::NORMAL_ERROR      => 'success',
-            self::CALL_API_ERROR    => '接口调用错误',
+            self::NORMAL_ERROR                  => 'success',
+            self::CALL_API_ERROR                => '接口调用错误',
+
+            // MySQL
+            self::MYSQL_FETCH_INFO_EMPTY_ERROR  => '数据库获取数据为空',
         ];
     }
 }

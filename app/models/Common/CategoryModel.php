@@ -41,4 +41,15 @@ class CategoryModel extends BaseModel
         'type',
         'row_status',
     ];
+
+    /**
+     * @var array
+     */
+    public static $fieldList = [
+        self::FIELD_TYPE_DEFAULT    => [],
+        self::FIELD_TYPE_MAIN       => [
+            'id',
+            'name',
+        ],
+    ];
 }
