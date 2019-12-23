@@ -14,5 +14,6 @@ class CategoryController extends ApiBaseController
      */
     public $actions = [
         'info'          => 'modules/Common/actions/Category/Info.php',
+        'lists'         => 'modules/Common/actions/Category/Lists.php',
     ];
 }

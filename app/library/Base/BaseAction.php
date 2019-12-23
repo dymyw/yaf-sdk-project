@@ -5,6 +5,7 @@
 
 namespace Base;
 
+use Common\ConstMap;
 use Dymyw\Yaf\Controller\AbstractAction;
 use Dymyw\Yaf\Response\Exception;
 use Dymyw\Yaf\Utils\Logger;
@@ -38,6 +39,28 @@ abstract class BaseAction extends AbstractAction
             ]);
 
             throw $e;
+        }
+    }
+
+    /**
+     * 添加排序条件
+     *
+     * @param $where
+     * @param string $prefix
+     */
+    public function addOrderBy(&$where, $prefix = '')
+    {
+        $orderField = $this->getController()->getRequest()->getParam('order_field');
+        $orderType  = strtoupper($this->getController()->getRequest()->getParam('order_type'));
+
+        if ($orderField && in_array($orderType, [ConstMap::ORDER_BY_ASC, ConstMap::ORDER_BY_DESC])) {
+            if ($prefix) {
+                $orderField = "{$prefix}.{$orderField}";
+            }
+
+            $where['ORDER'] = [
+                "{$orderField}" => $orderType,
+            ];
         }
     }
 }
