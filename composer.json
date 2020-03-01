@@ -1,10 +1,4 @@
 {
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:dymyw/yaf-sdk.git"
-        }
-    ],
     "require": {
         "dymyw/yaf-sdk": "dev-master"
     },
